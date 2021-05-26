@@ -2,12 +2,12 @@
 
 namespace Enbit\GLS\Requests;
 
-use Enbit\GLS\Interfaces\Address;
+use Enbit\GLS\Models\Address;
 use Enbit\GLS\Interfaces\Response;
 use Enbit\GLS\Models\Incoterm;
 use Enbit\GLS\Models\Parcel;
 use Enbit\GLS\Models\ReturnParcel;
-use Enbit\GLS\Responses\PrintLabels as PrintLabelsResponse;
+use \Enbit\GLS\Responses\Shipment as ShipmentResponse;
 
 class Shipment extends Request
 {
@@ -316,7 +316,7 @@ class Shipment extends Request
 
     public function makeResponse(?array $data): Response
     {
-        return new PrintLabelsResponse($data);
+        return new ShipmentResponse($data);
     }
 
     public function toArray(): array
