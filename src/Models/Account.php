@@ -14,6 +14,10 @@ class Account implements AccountContract
     /**
      * @var string
      */
+    protected $apiUrlSandbox = 'https://api-qs.gls-group.eu//public/v1/';
+    /**
+     * @var string
+     */
     protected $username;
     /**
      * @var string
@@ -27,6 +31,10 @@ class Account implements AccountContract
      * @var string
      */
     protected $contactId;
+    /**
+     * @var bool
+     */
+    protected $sandbox;
     /**
      * @var string
      */
@@ -60,12 +68,13 @@ class Account implements AccountContract
         'cs', 'da', 'de', 'en', 'es', 'fb', 'fi', 'fr', 'hr', 'hu', 'lu', 'nl', 'pl', 'pt', 'ro', 'sk', 'sl', 'vl',
     ];
 
-    public function __construct(string $username, string $password, string $customerID, string $contactId, string $langCode = 'en')
+    public function __construct(string $username, string $password, string $customerID, string $contactId, bool $sandbox = false, string $langCode = 'en')
     {
         $this->username = $username;
         $this->password = $password;
         $this->customerID = $customerID;
         $this->contactId = $contactId;
+        $this->sandbox = $sandbox;
 
         $langCode = strtolower($langCode);
         if(! in_array($langCode, $this->supportedLang)){
@@ -97,7 +106,7 @@ class Account implements AccountContract
 
     public function apiURL(): string
     {
-        return $this->apiUrl;
+        return $this->isSandbox()? $this->apiUrlSandbox : $this->apiUrl;
     }
 
     public function userName(): string
@@ -123,6 +132,22 @@ class Account implements AccountContract
     public function shipperID(): string
     {
        return $this->customerID() . ' ' . $this->contactId();
+    }
+
+    /**
+     * @return bool
+     */
+    public function isSandbox(): bool
+    {
+        return $this->sandbox;
+    }
+
+    /**
+     * @param bool $sandbox
+     */
+    public function setSandbox(bool $sandbox): void
+    {
+        $this->sandbox = $sandbox;
     }
 
     public function langCode(): string

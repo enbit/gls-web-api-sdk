@@ -72,7 +72,7 @@ class Shipment extends Response
             return null;
         }
 
-        return implode( array_map('base64_decode', $this->data()['Labels']) );
+        return implode( $this->getPdfArray() );
     }
 
     /**
@@ -84,7 +84,7 @@ class Shipment extends Response
             return null;
         }
 
-        return array_map('base64_decode', $this->data()['Labels']);
+        return array_map('base64_decode', $this->offsetGet('labels'));
     }
 
     /**
@@ -92,7 +92,7 @@ class Shipment extends Response
      */
     public function hasLabels(): bool
     {
-        return ! empty($this->data['Labels']);
+        return ! empty($this->offsetExists('labels'));
     }
 
     protected function buildParcelsInfoList(): void

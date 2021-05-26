@@ -27,7 +27,7 @@ class Shipment extends Request
     protected $shipmentDate;
 
     /**
-     * @var array
+     * @var array|null
      */
     protected $references;
 
@@ -122,17 +122,17 @@ class Shipment extends Request
     }
 
     /**
-     * @return array
+     * @return array|null
      */
-    public function getReferences(): array
+    public function getReferences(): ?array
     {
         return $this->references;
     }
 
     /**
-     * @param array $references
+     * @param array|null $references
      */
-    public function setReferences(array $references): void
+    public function setReferences(?array $references): void
     {
         $this->references = $references;
     }
@@ -173,7 +173,7 @@ class Shipment extends Request
      * @param Address $address
      * @param string $type
      */
-    protected function addAddress(array $address, $type): void
+    protected function addAddress(Address $address, $type): void
     {
         $this->addresses[$type] = $address;
     }
@@ -323,7 +323,7 @@ class Shipment extends Request
     {
         $params = [
             'shipperId' => $this->getShipperId(),
-            'shipmentDate' => $this->getShipmentDate()->format('Y-m-d'),
+            'shipmentDate' => $this->getShipmentDate()? $this->getShipmentDate()->format('Y-m-d') : '',
             'references' => $this->getReferences(),
             'brokerReference' => $this->getBrokerReference(),
             'addresses' => array_map(function (Address $address) {

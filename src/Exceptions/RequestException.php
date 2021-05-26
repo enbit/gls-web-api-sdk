@@ -16,7 +16,7 @@ class RequestException extends Exception
 
     public function __construct(ResponseInterface $response)
     {
-        parent::__construct("HTTP request returned status code {$response->getStatusCode()}.", $response->getStatusCode());
+        parent::__construct("HTTP request returned status code {$response->getStatusCode()}.", $response->getStatusCode() . "\n\n\n" . $response->getBody()->getContents());
 
         $this->response = $response;
     }
