@@ -1,0 +1,32 @@
+{
+    "name": "enbit/gls-web-api-sdk",
+    "description": "GLS SDK for Web API for Parcel Processing",
+    "keywords": [
+        "webapi",
+        "api",
+        "Gls",
+        "gls",
+        "rest"
+    ],
+    "homepage": "https://github.com/enbit/gls-web-api-sdk",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ahmad Saad Aldin",
+            "email": "as@enbit.de",
+            "homepage": "https://enbit.de/",
+            "role": "Developer"
+        }
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require": {
+        "php": "^7.1|^8.0",
+        "guzzlehttp/guzzle": "^6.5|^7.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Enbit\\GLS\\": "src/"
+        }
+    }
+}
