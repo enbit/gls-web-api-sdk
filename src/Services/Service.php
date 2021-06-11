@@ -21,7 +21,7 @@ abstract class Service
     public function toArray(): array
     {
         return array_filter([
-            'name' => self::$serviceName,
+            'name' => static::$serviceName,
             'infos' => $this->getInfo(),
         ]);
     }

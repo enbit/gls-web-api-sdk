@@ -70,7 +70,7 @@ class ShopReturn extends Service
         if($this->isWithGrCode()){
             $this->infos[] = [
                 'name'  => 'qrcode',
-                'value' =>  self::$qrCode,
+                'value' =>  static::$qrCode,
             ];
         }
 
