@@ -14,7 +14,7 @@ class Account implements AccountContract
     /**
      * @var string
      */
-    protected $apiUrlSandbox = 'https://api-qs.gls-group.eu//public/v1/';
+    protected $apiUrlSandbox = 'https://api-qs.gls-group.eu/public/v1/';
     /**
      * @var string
      */
